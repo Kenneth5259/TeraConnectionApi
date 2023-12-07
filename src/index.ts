@@ -1,12 +1,22 @@
-import express, { Request, Response } from 'express';
+import express from 'express';
+import dotenv from 'dotenv';
 
+import raid from './controllers/raid.controller'
+
+// initialize dotenv config
+dotenv.config();
+
+// initialize app and port
 const app = express();
 const port = process.env.PORT || 3000;
 
-app.get('/', (req: Request, res: Response) => {
-    res.send('Hello, TypeScript Express!');
-});
+// initialize json parsing
+app.use(express.json());
 
+// register controllers
+app.use('/raid', raid);
+
+// run application
 app.listen(port, () => {
     console.log(`Server running at http://localhost:${port}`);
 });
