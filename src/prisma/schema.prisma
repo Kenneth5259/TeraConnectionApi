@@ -1,0 +1,37 @@
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model Raid {
+  id        Int       @id @default(autoincrement())
+  createdAt DateTime  @default(now())
+  name      String
+  type      Type
+  star      Int       @default(1)
+}
+
+enum Type {
+  NORMAL
+  FIRE
+  WATER
+  GRASS
+  ELECTRIC
+  ICE
+  FIGHTING
+  POISON
+  GROUND
+  FLYING
+  PSYCHIC
+  BUG
+  ROCK
+  GHOST
+  DRAGON
+  STEEL
+  FAIRY
+  DARK
+}

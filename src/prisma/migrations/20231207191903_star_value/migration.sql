@@ -1,0 +1,2 @@
+-- AlterTable
+ALTER TABLE "Raid" ADD COLUMN     "star" INTEGER NOT NULL DEFAULT 1;
