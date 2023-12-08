@@ -12,8 +12,16 @@ export const createNewRaid = async (name: string, type: string, star: number): P
     });
 }
 
-export const getAllRaids = async (): Promise<Raid[]> => {
+export const getAllRaids = (): Promise<Raid[]> => {
     return prisma.raid.findMany()
+}
+
+export const getRaidById = (id: number): Promise<Raid> => {
+    return prisma.raid.findFirstOrThrow({
+        where: {
+            id: id
+        }
+    })
 }
 
 const getTypeFromString = (type: string): Type => {
